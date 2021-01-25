@@ -19,9 +19,11 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserService userService;
+    private SuccessUserHandler successUserHandler;
 
-    public SecurityConfig(@Qualifier("userServiceImpl") UserService userService) {
+    public SecurityConfig(@Qualifier("userServiceImpl") UserService userService, SuccessUserHandler successUserHandler) {
         this.userService = userService;
+        this.successUserHandler = successUserHandler;
     }
 
     @Autowired
